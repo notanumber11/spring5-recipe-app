@@ -6,5 +6,37 @@
 </head>
 <body>
 <h1>My Recipes!</h1>
+
+<div th:each="recipe : ${recipes}">
+    <table>
+        <tr align="center">
+            <th>ID</th>
+            <th>Description</th>
+            <th>Prep time</th>
+            <th>Cook time</th>
+            <th>Servings</th>
+            <th>Notes</th>
+        </tr>
+        <tr align="center" >
+            <td th:text="${recipe.id}">Default id recipe</td>
+            <td th:text="${recipe.description}">Default recipe</td>
+            <td th:text="${recipe.prepTime}">Default prep time</td>
+            <td th:text="${recipe.cookTime}">Default cook time</td>
+            <td th:text="${recipe.servings}">Default serving</td>
+        </tr>
+    </table>
+
+    <h3> Notes </h3>
+        <p th:text="${recipe.notes.recipeNotes}">Default note recipe></p>
+
+    <h3>Ingredients</h3>
+    <ul th:each="ingredient : ${recipe.ingredients}">
+        <li th:text="${ingredient.description}">Default ingredient description </li>
+
+    </ul>
+
+</div>
+
+
 </body>
 </html>
