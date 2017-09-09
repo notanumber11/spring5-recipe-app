@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Created by jt on 6/1/17.
@@ -40,7 +41,7 @@ public class IndexController {
         System.out.println("Cat Id is: " + categoryOptional.get().getId());
         System.out.println("UOM ID is: " + unitOfMeasureOptional.get().getId());
 
-        List<Recipe> recipeList = recipeService.getRecipes();
+        Set recipeList= recipeService.getRecipes();
         model.addAttribute("recipes",recipeList);
 
         return "index";
