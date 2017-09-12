@@ -1,6 +1,6 @@
 package guru.springframework.domain;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -45,9 +45,7 @@ public class Recipe {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    public void setNotes(Notes notes) {
-        this.notes = notes;
-        notes.setRecipe(this);
+    public Recipe() {
     }
 
     public Recipe addIngredient(Ingredient ingredient){
@@ -55,4 +53,9 @@ public class Recipe {
         this.ingredients.add(ingredient);
         return this;
     }
+
+    protected boolean canEqual(Object other) {
+        return other instanceof Recipe;
+    }
+
 }
